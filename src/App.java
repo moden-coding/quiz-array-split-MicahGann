@@ -1,5 +1,4 @@
 
-
 /* Complete methods: copyFrontAndBack and maxWordLength. 
  * DO NOT MODIFY THE MAIN METHOD!
  *
@@ -35,31 +34,55 @@
 import java.util.*;
 
 public class App {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
-        //copyFrontAndBack example
-        System.out.println("With input [1, 2, 3], you should get: [1, 3]. You got: " + Arrays.toString(copyFrontAndBack(new int[]{1,2,3})));
-        System.out.println("With input [1, 2, 3, 4], you should get: [1, 4]. You got: " + Arrays.toString(copyFrontAndBack(new int[]{1,2,3,4})));
-        System.out.println("With input [7], you should get: [7, 7]. You got: " + Arrays.toString(copyFrontAndBack(new int[]{7})));
-        
-        //wordLength example
+        // copyFrontAndBack example
+        System.out.println("With input [1, 2, 3], you should get: [1, 3]. You got: "
+                + Arrays.toString(copyFrontAndBack(new int[] { 1, 2, 3 })));
+        System.out.println("With input [1, 2, 3, 4], you should get: [1, 4]. You got: "
+                + Arrays.toString(copyFrontAndBack(new int[] { 1, 2, 3, 4 })));
+        System.out.println("With input [7], you should get: [7, 7]. You got: "
+                + Arrays.toString(copyFrontAndBack(new int[] { 7 })));
+        System.out.println("With input [4, 1, 2, 3], you should get: [4, 3]. You got: "
+                + Arrays.toString(copyFrontAndBack(new int[] { 4, 1, 2, 3 })));
+
+        // wordLength example
         System.out.println("With input \"Java is fun\" you should return 4. You got: " + maxWordLength("Java is fun"));
-        System.out.println("With input \"Java is scary\" you should return 5. You got: " + maxWordLength("Java is scary"));
-        System.out.println("With input \"I can do this\" you should return 4. You got: " + maxWordLength("I can do this"));
+        System.out.println(
+                "With input \"Java is scary\" you should return 5. You got: " + maxWordLength("Java is scary"));
+        System.out.println(
+                "With input \"I can do this\" you should return 4. You got: " + maxWordLength("I can do this"));
     }
 
-    public static int[] copyFrontAndBack(int[] nums){
-
-        return null; //this is a placeholder
+    public static int[] copyFrontAndBack(int[] nums) {
+        int back = nums.length - 1;
+        if (nums.length < 1) {
+            System.out.println("Invalid Array.");
+        }
+        if (nums.length >= 2) {
+            return new int[] { nums[0], nums[back] };
+        } else {
+            return new int[] { nums[0], nums[0] };
+        }
 
     }
 
-    public static int maxWordLength(String sentence){
+    public static int maxWordLength(String sentence) {
+        
+        String[] parts = sentence.split(" ");
+        int word = parts[0].length();
+        for (int i = 0; i < parts.length; i++) {
+            int length = Integer.valueOf(parts[i]);
+            if (word > length) {
+                length = length + word;
+            }
+            
+        }
+        return word;
 
+        
 
-        return -1; //this is a placeholder
+        // this is a placeholder
     }
-
-
 
 }
